@@ -160,7 +160,24 @@ SECRET_CAVE_INNER_ENTRANCES = [
 ]
 SECRET_CAVE_INNER_EXITS = [
   ZoneExit("ITest62", 0, 0, 0, "Ice Ring Isle Inner Cave"),
-  ZoneExit("sea", 42, 1, 1, "Cliff Plateau Isles Inner Cave")
+  ZoneExit("sea", 42, 1, 1, "Cliff Plateau Isles Inner Cave"),
+]
+
+GREAT_FAIRY_ENTRANCES = [
+  ZoneEntrance("sea", 3, 0, 1, "Great Fairy Entrance on Northern Fairy Island", "Northern Fairy Island", "sea", 3, 1),
+  ZoneEntrance("sea", 19, 0, 1, "Great Fairy Entrance on Eastern Fairy Island", "Eastern Fairy Island", "sea", 19, 1),
+  ZoneEntrance("sea", 15, 0, 1, "Great Fairy Entrance on Western Fairy Island", "Western Fairy Island", "sea", 15, 1),
+  ZoneEntrance("A_mori", 0, 1, 2, "Great Fairy Entrance on Outset Island", "Outset Island", "A_mori", 0, 2),
+  ZoneEntrance("sea", 28, 0, 1, "Great Fairy Entrance on Thorned Fairy Island", "Thorned Fairy Island", "sea", 28, 1),
+  ZoneEntrance("sea", 39, 0, 1, "Great Fairy Entrance on Southern Fairy Island", "Southern Fairy Island", "sea", 39, 1),
+]
+GREAT_FAIRY_EXITS = [
+  ZoneExit("Fairy01", 0, 0, 0, "Northern Fairy Island Great Fairy", zone_name="Northern Fairy Island"),
+  ZoneExit("Fairy02", 0, 0, 0, "Eastern Fairy Island Great Fairy", zone_name="Eastern Fairy Island"),
+  ZoneExit("Fairy03", 0, 0, 0, "Western Fairy Island Great Fairy", zone_name="Western Fairy Island"),
+  ZoneExit("Fairy04", 0, 0, 0, "Outset Island Great Fairy", zone_name="Outset Island"),
+  ZoneExit("Fairy05", 0, 0, 0, "Thorned Fairy Island Great Fairy", zone_name="Thorned Fairy Island"),
+  ZoneExit("Fairy06", 0, 0, 0, "Southern Fairy Island Great Fairy", zone_name="Southern Fairy Island")
 ]
 
 
@@ -170,6 +187,9 @@ DUNGEON_ENTRANCE_NAMES_WITH_NO_REQUIREMENTS = [
 SECRET_CAVE_ENTRANCE_NAMES_WITH_NO_REQUIREMENTS = [
   "Secret Cave Entrance on Pawprint Isle",
   "Secret Cave Entrance on Cliff Plateau Isles",
+]
+GREAT_FAIRY_ENTRANCE_NAMES_WITH_NO_REQUIREMENTS = [
+  "Great Fairy Entrance on Northern Fairy Island",
 ]
 
 DUNGEON_EXIT_NAMES_WITH_NO_REQUIREMENTS = [
@@ -183,6 +203,14 @@ PUZZLE_SECRET_CAVE_EXIT_NAMES_WITH_NO_REQUIREMENTS = [
 ]
 COMBAT_SECRET_CAVE_EXIT_NAMES_WITH_NO_REQUIREMENTS = [
   "Rock Spire Isle Secret Cave",
+]
+GREAT_FAIRY_EXIT_NAMES_WITH_NO_REQUIREMENTS = [
+  "Northern Fairy Island Great Fairy",
+  "Eastern Fairy Island Great Fairy",
+  "Western Fairy Island Great Fairy",
+  "Outset Fairy Island Great Fairy",
+  "Thorned Fairy Island Great Fairy",
+  "Southern Fairy Island Great Fairy",
 ]
 
 ITEM_LOCATION_NAME_TO_EXIT_OVERRIDES = {
@@ -252,6 +280,13 @@ class EntranceRandomizer(BaseRandomizer):
       
       "Inner Entrance in Ice Ring Isle Secret Cave": "Ice Ring Isle Inner Cave",
       "Inner Entrance in Cliff Plateau Isles Secret Cave": "Cliff Plateau Isles Inner Cave",
+
+      "Great Fairy Entrance on Northern Fairy Island": "Northern Fairy Island Great Fairy",
+      "Great Fairy Entrance on Eastern Fairy Island": "Eastern Fairy Island Great Fairy",
+      "Great Fairy Entrance on Western Fairy Island": "Western Fairy Island Great Fairy",
+      "Great Fairy Entrance on Outset Island": "Outset Island Great Fairy",
+      "Great Fairy Entrance on Thorned Fairy Island": "Thorned Fairy Island Great Fairy",
+      "Great Fairy Entrance on Southern Fairy Island": "Southern Fairy Island Great Fairy",
     }
     
     self.done_entrances_to_exits: dict[ZoneEntrance, ZoneExit] = {}
@@ -271,6 +306,8 @@ class EntranceRandomizer(BaseRandomizer):
         or self.options.get("progression_combat_secret_caves") \
         or self.options.get("progression_savage_labyrinth"):
       self.entrance_names_with_no_requirements += SECRET_CAVE_ENTRANCE_NAMES_WITH_NO_REQUIREMENTS
+    if self.options.get("progression_great_fairies"):
+      self.entrance_names_with_no_requirements += GREAT_FAIRY_ENTRANCE_NAMES_WITH_NO_REQUIREMENTS
     
     if self.options.get("progression_dungeons"):
       self.exit_names_with_no_requirements += DUNGEON_EXIT_NAMES_WITH_NO_REQUIREMENTS
@@ -278,6 +315,8 @@ class EntranceRandomizer(BaseRandomizer):
       self.exit_names_with_no_requirements += PUZZLE_SECRET_CAVE_EXIT_NAMES_WITH_NO_REQUIREMENTS
     if self.options.get("progression_combat_secret_caves"):
       self.exit_names_with_no_requirements += COMBAT_SECRET_CAVE_EXIT_NAMES_WITH_NO_REQUIREMENTS
+    if self.options.get("progression_great_fairies"):
+      self.exit_names_with_no_requirements += GREAT_FAIRY_EXIT_NAMES_WITH_NO_REQUIREMENTS
     # No need to check progression_savage_labyrinth, since neither of the items inside Savage have no requirements.
     
     self.nested_entrance_paths: list[list[str]] = []
@@ -302,6 +341,7 @@ class EntranceRandomizer(BaseRandomizer):
         "randomize_miniboss_entrances",
         "randomize_boss_entrances",
         "randomize_secret_cave_inner_entrances",
+        "randomize_great_fairy_entrances",
       ]
     )
   
@@ -359,12 +399,15 @@ class EntranceRandomizer(BaseRandomizer):
     doing_dungeons = False
     doing_caves = False
     doing_race_mode_entrances = False
+    doing_fairies = False
     if any(ex in DUNGEON_EXITS for ex in relevant_exits):
       doing_dungeons = True
     if any(ex in SECRET_CAVE_EXITS for ex in relevant_exits):
       doing_caves = True
     if doing_dungeons or any(ex in MINIBOSS_EXITS + BOSS_EXITS for ex in relevant_exits):
       doing_race_mode_entrances = True
+    if any(ex in GREAT_FAIRY_EXITS for ex in relevant_exits):
+      doing_fairies = True
     
     self.rng.shuffle(relevant_entrances)
     
@@ -811,23 +854,27 @@ class EntranceRandomizer(BaseRandomizer):
     bosses = self.options.get("randomize_boss_entrances")
     secret_caves = self.options.get("randomize_secret_cave_entrances")
     inner_caves = self.options.get("randomize_secret_cave_inner_entrances")
+    fairies = self.options.get("randomize_great_fairy_entrances")
     
     mix_entrances = self.options.get("mix_entrances")
     any_dungeons = dungeons or minibosses or bosses
     any_caves = secret_caves or inner_caves
+    any_fairies = fairies
     
-    if mix_entrances == "Keep Separate" and any_dungeons and any_caves:
+    if mix_entrances == "Keep Separate" and any_dungeons and any_caves and any_fairies:
       yield self.get_one_entrance_set(dungeons=dungeons, minibosses=minibosses, bosses=bosses)
       yield self.get_one_entrance_set(caves=secret_caves, inner_caves=inner_caves)
-    elif (any_dungeons or any_caves) and mix_entrances in ["Keep Separate", "Mix Together"]:
+      yield self.get_one_entrance_set(fairies=fairies)
+    elif (any_dungeons or any_caves or any_fairies) and mix_entrances in ["Keep Separate", "Mix Together"]:
       yield self.get_one_entrance_set(
         dungeons=dungeons, minibosses=minibosses, bosses=bosses,
         caves=secret_caves, inner_caves=inner_caves,
+        fairies=fairies,
       )
     else:
       raise Exception("An invalid combination of entrance randomizer options was selected.")
   
-  def get_one_entrance_set(self, *, dungeons=False, caves=False, minibosses=False, bosses=False, inner_caves=False):
+  def get_one_entrance_set(self, *, dungeons=False, caves=False, minibosses=False, bosses=False, inner_caves=False, fairies=False):
     relevant_entrances: list[ZoneEntrance] = []
     relevant_exits: list[ZoneExit] = []
     if dungeons:
@@ -847,6 +894,9 @@ class EntranceRandomizer(BaseRandomizer):
     if inner_caves:
       relevant_entrances += SECRET_CAVE_INNER_ENTRANCES
       relevant_exits += SECRET_CAVE_INNER_EXITS
+    if fairies:
+      relevant_entrances += GREAT_FAIRY_ENTRANCES
+      relevant_exits += GREAT_FAIRY_EXITS
     return relevant_entrances, relevant_exits
   
   def get_outermost_entrance_for_exit(self, zone_exit: ZoneExit):
@@ -886,7 +936,7 @@ class EntranceRandomizer(BaseRandomizer):
     
     loc_zone_name, _ = self.logic.split_location_name_by_zone(location_name)
     
-    if not self.logic.is_dungeon_or_cave(location_name):
+    if not self.logic.is_dungeon_or_cave_or_fairy(location_name):
       return loc_zone_name
     
     if loc_zone_name in ["Hyrule", "Ganon's Tower", "Mailbox"]:

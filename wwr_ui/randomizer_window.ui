@@ -37,12 +37,21 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>831</width>
-         <height>611</height>
+         <width>821</width>
+         <height>634</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
-        <property name="margin" stdset="0">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <item>
@@ -69,7 +78,7 @@
                  <string>Vanilla Wind Waker ISO [[?]](help)</string>
                 </property>
                 <property name="textFormat">
-                 <enum>Qt::MarkdownText</enum>
+                 <enum>Qt::PlainText</enum>
                 </property>
                </widget>
               </item>
@@ -447,120 +456,123 @@
              </widget>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_19">
-              <item>
-               <widget class="QGroupBox" name="groupBox_7">
-                <property name="title">
-                 <string>Entrance Randomizer Options</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_9">
-                 <item row="1" column="1">
-                  <widget class="QCheckBox" name="randomize_miniboss_entrances">
+             <widget class="QGroupBox" name="groupBox_7">
+              <property name="title">
+               <string>Entrance Randomizer Options</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_9">
+               <item row="1" column="1">
+                <widget class="QCheckBox" name="randomize_miniboss_entrances">
+                 <property name="text">
+                  <string>Nested Minibosses</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="randomize_boss_entrances">
+                 <property name="text">
+                  <string>Nested Bosses</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <layout class="QHBoxLayout" name="horizontalLayout_5">
+                 <item>
+                  <widget class="QLabel" name="label_for_mix_entrances">
                    <property name="text">
-                    <string>Nested Minibosses</string>
+                    <string>Mix Entrances</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="0">
-                  <widget class="QCheckBox" name="randomize_boss_entrances">
-                   <property name="text">
-                    <string>Nested Bosses</string>
+                 <item>
+                  <widget class="QComboBox" name="mix_entrances">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
                    </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="2">
-                  <layout class="QHBoxLayout" name="horizontalLayout_5">
                    <item>
-                    <widget class="QLabel" name="label_for_mix_entrances">
-                     <property name="text">
-                      <string>Mix Entrances</string>
-                     </property>
-                    </widget>
+                    <property name="text">
+                     <string>Keep Separate</string>
+                    </property>
                    </item>
                    <item>
-                    <widget class="QComboBox" name="mix_entrances">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                       <horstretch>1</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <item>
-                      <property name="text">
-                       <string>Keep Separate</string>
-                      </property>
-                     </item>
-                     <item>
-                      <property name="text">
-                       <string>Mix Together</string>
-                      </property>
-                     </item>
-                    </widget>
+                    <property name="text">
+                     <string>Mix Together</string>
+                    </property>
                    </item>
-                  </layout>
-                 </item>
-                 <item row="1" column="2">
-                  <widget class="QCheckBox" name="randomize_secret_cave_inner_entrances">
-                   <property name="text">
-                    <string>Inner Secret Caves</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QCheckBox" name="randomize_secret_cave_entrances">
-                   <property name="text">
-                    <string>Secret Caves</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="0">
-                  <widget class="QCheckBox" name="randomize_dungeon_entrances">
-                   <property name="text">
-                    <string>Dungeons</string>
-                   </property>
                   </widget>
                  </item>
                 </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QGroupBox" name="groupBox_8">
-                <property name="title">
-                 <string>Other Randomizers</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_10">
-                 <item row="0" column="0">
-                  <widget class="QCheckBox" name="randomize_starting_island">
-                   <property name="text">
-                    <string>Randomize Starting Island</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QCheckBox" name="randomize_enemy_palettes">
-                   <property name="text">
-                    <string>Randomize Enemy Palettes</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QCheckBox" name="randomize_charts">
-                   <property name="text">
-                    <string>Randomize Charts</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="QCheckBox" name="randomize_enemies">
-                   <property name="text">
-                    <string>Randomize Enemy Locations</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
+               </item>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="randomize_dungeon_entrances">
+                 <property name="text">
+                  <string>Dungeons</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="randomize_secret_cave_entrances">
+                 <property name="text">
+                  <string>Secret Caves</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QCheckBox" name="randomize_great_fairy_entrances">
+                 <property name="text">
+                  <string>Great Fairies</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QCheckBox" name="randomize_secret_cave_inner_entrances">
+                 <property name="text">
+                  <string>Inner Secret Caves</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_8">
+              <property name="title">
+               <string>Other Randomizers</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_10">
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="randomize_starting_island">
+                 <property name="text">
+                  <string>Randomize Starting Island</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="randomize_enemy_palettes">
+                 <property name="text">
+                  <string>Randomize Enemy Palettes</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="randomize_charts">
+                 <property name="text">
+                  <string>Randomize Charts</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QCheckBox" name="randomize_enemies">
+                 <property name="text">
+                  <string>Randomize Enemy Locations</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
             </item>
             <item>
              <widget class="QGroupBox" name="groupBox_3">

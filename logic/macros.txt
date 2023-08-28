@@ -373,6 +373,39 @@ Can Access Ice Ring Isle Inner Cave:
 Can Access Cliff Plateau Isles Inner Cave:
   Can Access Inner Entrance in Cliff Plateau Isles Secret Cave
 
+Can Access Great Fairy Entrance on Northern Fairy Island:
+  Nothing
+Can Access Great Fairy Entrance on Eastern Fairy Island:
+  Can Move Boulders
+Can Access Great Fairy Entrance on Western Fairy Island:
+  Skull Hammer
+Can Access Great Fairy Entrance on Outset Island:
+  Can Access Forest of Fairies Hub
+  & Can Move Boulders
+Can Access Great Fairy Entrance on Thorned Fairy Island:
+  Skull Hammer
+Can Access Great Fairy Entrance on Southern Fairy Island:
+  Bombs | Fire Arrows 
+
+# The below macros are used when great fairy entrances are not randomized.
+# When great fairy entrances are randomized, these macros are shuffled around by the randomizer logic.
+Can Access Northern Fairy Island Great Fairy:
+  Can Access Great Fairy Entrance on Northern Fairy Island
+Can Access Eastern Fairy Island Great Fairy:
+  Can Access Great Fairy Entrance on Eastern Fairy Island
+Can Access Western Fairy Island Great Fairy:
+  Can Access Great Fairy Entrance on Western Fairy Island
+Can Access Outset Island Great Fairy:
+  Can Access Great Fairy Entrance on Outset Island
+Can Access Thorned Fairy Island Great Fairy:
+  Can Access Great Fairy Entrance on Thorned Fairy Island
+Can Access Southern Fairy Island Great Fairy:
+  Can Access Great Fairy Entrance on Southern Fairy Island
+
+Can Access Forest of Fairies Hub:
+  Can Cut Down Outset Trees
+  & Can Fly With Deku Leaf Outdoors
+
 Can Get Past Forsaken Fortress Gate:
   Bombs
   # Note: It's also possible to blow up the door without bombs by using the mounted cannons, but this is not required by the logic.

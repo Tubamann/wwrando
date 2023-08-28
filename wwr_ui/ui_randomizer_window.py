@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randomizer_window.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.2
+## Created by: Qt User Interface Compiler version 6.4.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -39,10 +39,10 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 831, 611))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 821, 634))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.tabWidget = QTabWidget(self.scrollAreaWidgetContents)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setEnabled(True)
@@ -59,7 +59,7 @@ class Ui_MainWindow(object):
 
         self.label_for_clean_iso_path = QLabel(self.tab_randomizer_settings)
         self.label_for_clean_iso_path.setObjectName(u"label_for_clean_iso_path")
-        self.label_for_clean_iso_path.setTextFormat(Qt.MarkdownText)
+        self.label_for_clean_iso_path.setTextFormat(Qt.PlainText)
 
         self.gridLayout.addWidget(self.label_for_clean_iso_path, 0, 0, 1, 1)
 
@@ -303,8 +303,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.groupBox_2)
 
-        self.horizontalLayout_19 = QHBoxLayout()
-        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
         self.groupBox_7 = QGroupBox(self.tab_randomizer_settings)
         self.groupBox_7.setObjectName(u"groupBox_7")
         self.gridLayout_9 = QGridLayout(self.groupBox_7)
@@ -336,25 +334,30 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.mix_entrances)
 
 
-        self.gridLayout_9.addLayout(self.horizontalLayout_5, 0, 2, 1, 1)
-
-        self.randomize_secret_cave_inner_entrances = QCheckBox(self.groupBox_7)
-        self.randomize_secret_cave_inner_entrances.setObjectName(u"randomize_secret_cave_inner_entrances")
-
-        self.gridLayout_9.addWidget(self.randomize_secret_cave_inner_entrances, 1, 2, 1, 1)
-
-        self.randomize_secret_cave_entrances = QCheckBox(self.groupBox_7)
-        self.randomize_secret_cave_entrances.setObjectName(u"randomize_secret_cave_entrances")
-
-        self.gridLayout_9.addWidget(self.randomize_secret_cave_entrances, 0, 1, 1, 1)
+        self.gridLayout_9.addLayout(self.horizontalLayout_5, 0, 3, 1, 1)
 
         self.randomize_dungeon_entrances = QCheckBox(self.groupBox_7)
         self.randomize_dungeon_entrances.setObjectName(u"randomize_dungeon_entrances")
 
         self.gridLayout_9.addWidget(self.randomize_dungeon_entrances, 0, 0, 1, 1)
 
+        self.randomize_secret_cave_entrances = QCheckBox(self.groupBox_7)
+        self.randomize_secret_cave_entrances.setObjectName(u"randomize_secret_cave_entrances")
 
-        self.horizontalLayout_19.addWidget(self.groupBox_7)
+        self.gridLayout_9.addWidget(self.randomize_secret_cave_entrances, 0, 1, 1, 1)
+
+        self.randomize_great_fairy_entrances = QCheckBox(self.groupBox_7)
+        self.randomize_great_fairy_entrances.setObjectName(u"randomize_great_fairy_entrances")
+
+        self.gridLayout_9.addWidget(self.randomize_great_fairy_entrances, 0, 2, 1, 1)
+
+        self.randomize_secret_cave_inner_entrances = QCheckBox(self.groupBox_7)
+        self.randomize_secret_cave_inner_entrances.setObjectName(u"randomize_secret_cave_inner_entrances")
+
+        self.gridLayout_9.addWidget(self.randomize_secret_cave_inner_entrances, 1, 2, 1, 1)
+
+
+        self.verticalLayout_3.addWidget(self.groupBox_7)
 
         self.groupBox_8 = QGroupBox(self.tab_randomizer_settings)
         self.groupBox_8.setObjectName(u"groupBox_8")
@@ -381,10 +384,7 @@ class Ui_MainWindow(object):
         self.gridLayout_10.addWidget(self.randomize_enemies, 1, 1, 1, 1)
 
 
-        self.horizontalLayout_19.addWidget(self.groupBox_8)
-
-
-        self.verticalLayout_3.addLayout(self.horizontalLayout_19)
+        self.verticalLayout_3.addWidget(self.groupBox_8)
 
         self.groupBox_3 = QGroupBox(self.tab_randomizer_settings)
         self.groupBox_3.setObjectName(u"groupBox_3")
@@ -1100,9 +1100,10 @@ class Ui_MainWindow(object):
         self.mix_entrances.setItemText(0, QCoreApplication.translate("MainWindow", u"Keep Separate", None))
         self.mix_entrances.setItemText(1, QCoreApplication.translate("MainWindow", u"Mix Together", None))
 
-        self.randomize_secret_cave_inner_entrances.setText(QCoreApplication.translate("MainWindow", u"Inner Secret Caves", None))
-        self.randomize_secret_cave_entrances.setText(QCoreApplication.translate("MainWindow", u"Secret Caves", None))
         self.randomize_dungeon_entrances.setText(QCoreApplication.translate("MainWindow", u"Dungeons", None))
+        self.randomize_secret_cave_entrances.setText(QCoreApplication.translate("MainWindow", u"Secret Caves", None))
+        self.randomize_great_fairy_entrances.setText(QCoreApplication.translate("MainWindow", u"Great Fairies", None))
+        self.randomize_secret_cave_inner_entrances.setText(QCoreApplication.translate("MainWindow", u"Inner Secret Caves", None))
         self.groupBox_8.setTitle(QCoreApplication.translate("MainWindow", u"Other Randomizers", None))
         self.randomize_starting_island.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Island", None))
         self.randomize_enemy_palettes.setText(QCoreApplication.translate("MainWindow", u"Randomize Enemy Palettes", None))

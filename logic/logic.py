@@ -214,14 +214,15 @@ class Logic:
     for attr_name, value in vars_backup.items():
       setattr(self, attr_name, copy.deepcopy(value))
   
-  def is_dungeon_or_cave(self, location_name):
+  def is_dungeon_or_cave_or_fairy(self, location_name):
     # Look up the setting that the location name is under
     is_dungeon = "Dungeon" in self.item_locations[location_name]["Types"]
     is_puzzle_cave = "Puzzle Secret Cave" in self.item_locations[location_name]["Types"]
     is_combat_cave = "Combat Secret Cave" in self.item_locations[location_name]["Types"]
     is_savage = "Savage Labyrinth" in self.item_locations[location_name]["Types"]
+    is_fairy = "Great Fairy" in self.item_locations[location_name]["Types"] and location_name != "Two-Eye Reef - Big Octo Great Fairy"
     
-    return (is_dungeon or is_puzzle_cave or is_combat_cave or is_savage)
+    return (is_dungeon or is_puzzle_cave or is_combat_cave or is_savage or is_fairy)
   
   def set_location_to_item(self, location_name, item_name):
     #print("Setting %s to %s" % (location_name, item_name))
