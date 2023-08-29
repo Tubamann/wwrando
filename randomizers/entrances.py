@@ -777,7 +777,7 @@ class EntranceRandomizer(BaseRandomizer):
           exit_scls.spawn_id = zone_entrance.spawn_id
           exit_scls.save_changes()
     
-    if zone_exit in SECRET_CAVE_EXITS or zone_exit == ZoneExit["Ice Ring Isle Inner Cave"]:
+    if zone_exit in SECRET_CAVE_EXITS or zone_exit in GREAT_FAIRY_EXITS or zone_exit == ZoneExit["Ice Ring Isle Inner Cave"]:
       # Update the sector coordinates in the 2DMA chunk so that save-and-quitting in a secret cave puts you on the correct island.
       exit_dzs = self.rando.get_arc(exit_dzs_path).get_file("stage.dzs", DZx)
       _2dma = exit_dzs.entries_by_type(_2DMA)[0]
